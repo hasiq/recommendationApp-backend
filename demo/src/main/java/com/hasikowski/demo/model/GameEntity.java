@@ -24,4 +24,7 @@ public class GameEntity {
    private  String author;
 
    private List<String> genre;
+
+   @Column(name = "Created")
+   private String yearOfProduction;
 }

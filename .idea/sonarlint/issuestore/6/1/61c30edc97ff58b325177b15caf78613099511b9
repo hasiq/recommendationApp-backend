@@ -1,8 +1,8 @@
 
 r
-java:S36558"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(îí›Äÿÿÿÿÿ8ÓÆ¿ÆÇ1
+java:S3655C"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(îí›Äÿÿÿÿÿ8ç½¸‘È1
 r
-java:S36551"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(É¼•ÿùÿÿÿÿ8çºµÆÇ1
-G	java:S106""+Replace this use of System.out by a logger.(³¹°8ëºµÆÇ1
+java:S3655<"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(É¼•ÿùÿÿÿÿ8æ½¸‘È1
+G	java:S106-"+Replace this use of System.out by a logger.(³¹°8ğ½¸‘È1
 Q
-java:S1128"/Remove this unused import 'java.util.Optional'.(¨˜ëİüÿÿÿÿ8ÜÆ¿ÆÇ1
+java:S1128"/Remove this unused import 'java.util.Optional'.(¨˜ëİüÿÿÿÿ8·Òº‘È1

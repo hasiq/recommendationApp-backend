@@ -17,12 +17,12 @@ public class GameController {
     }
 
     @GetMapping("/games")
-    public List<GameEntity> getAllGames(){
-        return this.gameService.findAll();
+    public ResponseEntity<List<GameEntity>> getAllGames(){
+        return  this.gameService.findAll();
     }
 
     @PostMapping("/game")
-    public GameEntity addGame(@RequestBody GameEntity game){
+    public ResponseEntity<GameEntity> addGame(@RequestBody GameEntity game){
         return this.gameService.addGame(game);
     }
 

@@ -21,12 +21,23 @@ public class GameService  {
     }
 
 
-    public List<GameEntity> findAll(){
-        return this.gameRepository.findAll();
+    public ResponseEntity<List<GameEntity>> findAll(){
+        if(this.gameRepository.findAll().size() > 1) {
+            return new ResponseEntity<>(this.gameRepository.findAll(), HttpStatusCode.valueOf(200));
+        }
+        else
+        {
+            return  new ResponseEntity<>(this.gameRepository.findAll(),HttpStatusCode.valueOf(204));
+        }
     }
 
-    public GameEntity addGame(GameEntity game){
-        return this.gameRepository.save(game);
+    public ResponseEntity<GameEntity> addGame(GameEntity game){
+        if(game != null) {
+            return new ResponseEntity<>(this.gameRepository.save(game), HttpStatusCode.valueOf(201));
+        }
+        else {
+            return  new ResponseEntity<>(HttpStatusCode.valueOf(403));
+        }
     }
 
     public ResponseEntity<GameEntity> deleteGame(Long id){
