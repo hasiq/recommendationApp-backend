@@ -1,8 +1,10 @@
 
 r
-java:S3655C"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(îí›Äÿÿÿÿÿ8ç½¸‘È1
+java:S3655="PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(É¼•ÿùÿÿÿÿ8»®˜È1
 r
-java:S3655<"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(É¼•ÿùÿÿÿÿ8æ½¸‘È1
-G	java:S106-"+Replace this use of System.out by a logger.(³¹°8ğ½¸‘È1
-Q
-java:S1128"/Remove this unused import 'java.util.Optional'.(¨˜ëİüÿÿÿÿ8·Òº‘È1
+java:S3655D"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(îí›Äÿÿÿÿÿ8½®˜È1
+G	java:S106."+Replace this use of System.out by a logger.(³¹°8Ä®˜È1
+_
+java:S1128"=Remove this unused import 'jakarta.annotation.PostConstruct'.(û²ñüşÿÿÿÿ8ÀŠ˜È1
+M
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8ÀŠ˜È1

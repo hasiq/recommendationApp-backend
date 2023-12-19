@@ -21,4 +21,7 @@ public interface GameRepository extends JpaRepository<GameEntity,Long> {
 
     @Override
     Optional<GameEntity> findById(Long id);
+
+    @Override
+    <S extends GameEntity> List<S> saveAll(Iterable<S> entities);
 }
