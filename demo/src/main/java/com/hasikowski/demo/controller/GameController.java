@@ -40,4 +40,9 @@ public class GameController {
     public ResponseEntity<GameEntity> editGame(@PathVariable Long id, @RequestBody GameEntity game){
         return this.gameService.editGame(id,game);
     }
+
+    @PostMapping("/games/multiple")
+    public ResponseEntity<List<GameEntity>> addMultipleGames(@RequestBody List<GameEntity> gameEntities){
+        return this.gameService.addGames(gameEntities);
+    }
 }
