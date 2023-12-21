@@ -1,6 +1,8 @@
 package com.hasikowski.demo.controller;
 
 import com.hasikowski.demo.model.GameEntity;
+import com.hasikowski.demo.model.GameRecommendDto;
+import com.hasikowski.demo.model.RecommendDto;
 import com.hasikowski.demo.service.GameService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -44,5 +46,10 @@ public class GameController {
     @PostMapping("/games/multiple")
     public ResponseEntity<List<GameEntity>> addMultipleGames(@RequestBody List<GameEntity> gameEntities){
         return this.gameService.addGames(gameEntities);
+    }
+
+    @PostMapping("/games/recommend")
+    public ResponseEntity<List<GameRecommendDto>> recommendGames(@RequestBody RecommendDto recommendDto){
+        return this.gameService.recomendGames(recommendDto);
     }
 }
