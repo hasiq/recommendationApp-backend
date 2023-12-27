@@ -5,15 +5,12 @@ import com.hasikowski.demo.model.GameEntity;
 import com.hasikowski.demo.model.GameRecommendDto;
 import com.hasikowski.demo.model.RecommendDto;
 import com.hasikowski.demo.repository.GameRepository;
-import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -58,13 +55,15 @@ public class GameService  {
 
     }
 
-    public ResponseEntity<GameEntity> findById(Long id){
+    public ResponseEntity<List<GameEntity>> findById(Long id){
         if(!this.gameRepository.existsById(id)){
             return new ResponseEntity<>(HttpStatusCode.valueOf(400));
         }
         else {
             GameEntity game = this.gameRepository.findById(id).get();
-            return new ResponseEntity<>(game ,HttpStatusCode.valueOf(200));
+            List<GameEntity> list = new ArrayList<>();
+            list.add(game);
+            return new ResponseEntity<>(list ,HttpStatusCode.valueOf(200));
         }
     }
 

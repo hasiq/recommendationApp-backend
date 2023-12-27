@@ -34,7 +34,7 @@ public class GameController {
     }
 
     @GetMapping("/games/{id}")
-    public ResponseEntity<GameEntity> getById(@PathVariable Long id){
+    public ResponseEntity<List<GameEntity>> getById(@PathVariable Long id){
         return this.gameService.findById(id);
     }
 
