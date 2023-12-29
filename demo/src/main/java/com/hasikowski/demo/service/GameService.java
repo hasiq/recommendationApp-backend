@@ -90,13 +90,18 @@ public class GameService  {
         List<GameRecommendDto> list1 = new ArrayList<>();
         for (GameEntity g : list){
            double number = compare(g.getGenre(),recommend.getGenres());
-           if(number >= recommend.getCompatibility()) {
+            System.out.println(g.getName() + " " + number + " " + recommend.getCompatibility()/100);
+           if((Double.compare(number, (recommend.getCompatibility()/100))) > 0)  {
                list1.add(new GameRecommendDto(g.getId(), g.getName(), number));
            }
         }
+        if(list1.isEmpty())
+        {
+            return new ResponseEntity<>(HttpStatusCode.valueOf(204));
+        }
         CustomComparator sort = new CustomComparator();
         list1.sort(sort.reversed());
-        int size = Math.min(list1.size()-1, recommend.getLimit());
+        int size = Math.min(list1.size(), recommend.getLimit());
         list1 = list1.subList(0, size);
         return new ResponseEntity<>(list1,HttpStatusCode.valueOf(200));
     }
