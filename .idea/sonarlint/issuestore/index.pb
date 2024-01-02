@@ -19,3 +19,5 @@ r
 Bdemo/src/main/java/com/hasikowski/demo/model/GameRecommendDto.java,8\7\87383687a3ea30d5f8526c35c95ba918d11dd9b8
 r
 Bdemo/src/main/java/com/hasikowski/demo/model/CustomComparator.java,f\a\fa15399daa1b88e6e7da3c0630c0f794a7c39eb5
+m
+=demo/src/main/java/com/hasikowski/demo/model/GenreEntity.java,8\e\8ee2f8b2e98345bfefc52fdc56fd7612bc2d5655

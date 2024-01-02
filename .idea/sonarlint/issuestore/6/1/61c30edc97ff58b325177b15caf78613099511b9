@@ -1,7 +1,8 @@
 
 r
-java:S3655H"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(îí›Äÿÿÿÿÿ8Óô–­Ë1
+java:S3655E"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(îí›Äÿÿÿÿÿ8Óô–­Ë1
 r
-java:S3655?"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(É¼•ÿùÿÿÿÿ8Òô–­Ë1
-G	java:S1060"+Replace this use of System.out by a logger.(³¹°8Úô–­Ë1
-L	java:S106]"+Replace this use of System.out by a logger.(¨ª´úÿÿÿÿ8ãô–­Ë1
+java:S3655<"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(É¼•ÿùÿÿÿÿ8Òô–­Ë1
+G	java:S106-"+Replace this use of System.out by a logger.(³¹°8Úô–­Ë1
+s
+java:S2159m"VRemove this call to "equals"; comparisons between unrelated types always return false.(Ô³ğ‘8 —£ÑÌ1

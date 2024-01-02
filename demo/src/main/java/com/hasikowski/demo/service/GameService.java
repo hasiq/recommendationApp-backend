@@ -1,9 +1,6 @@
 package com.hasikowski.demo.service;
 
-import com.hasikowski.demo.model.CustomComparator;
-import com.hasikowski.demo.model.GameEntity;
-import com.hasikowski.demo.model.GameRecommendDto;
-import com.hasikowski.demo.model.RecommendDto;
+import com.hasikowski.demo.model.*;
 import com.hasikowski.demo.repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;
@@ -90,7 +87,6 @@ public class GameService  {
         List<GameRecommendDto> list1 = new ArrayList<>();
         for (GameEntity g : list){
            double number = compare(g.getGenre(),recommend.getGenres());
-            System.out.println(g.getName() + " " + number + " " + recommend.getCompatibility()/100);
            if((Double.compare(number, (recommend.getCompatibility()/100))) > 0)  {
                list1.add(new GameRecommendDto(g.getId(), g.getName(), number));
            }
@@ -106,7 +102,7 @@ public class GameService  {
         return new ResponseEntity<>(list1,HttpStatusCode.valueOf(200));
     }
 
-    public double compare(List<String> genres, List<String> compare){
+    public double compare(List<GenreEntity> genres, List<String> compare){
         double count = 0;
         for(int i = 0; i < genres.size(); i++){
             for (int j = 0; j < compare.size(); j++){
