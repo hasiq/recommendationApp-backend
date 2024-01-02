@@ -106,7 +106,7 @@ public class GameService  {
         double count = 0;
         for(int i = 0; i < genres.size(); i++){
             for (int j = 0; j < compare.size(); j++){
-                if(genres.get(i).equals(compare.get(j))){
+                if(genres.get(i).getName().equals(compare.get(j))){
                     count++;
                 }
             }

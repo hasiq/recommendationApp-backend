@@ -21,3 +21,9 @@ r
 Bdemo/src/main/java/com/hasikowski/demo/model/CustomComparator.java,f\a\fa15399daa1b88e6e7da3c0630c0f794a7c39eb5
 m
 =demo/src/main/java/com/hasikowski/demo/model/GenreEntity.java,8\e\8ee2f8b2e98345bfefc52fdc56fd7612bc2d5655
+v
+Fdemo/src/main/java/com/hasikowski/demo/repository/GenreRepository.java,5\b\5b54c01fd0c4467db90c1680e048d0ff4ffd2fd1
+p
+@demo/src/main/java/com/hasikowski/demo/service/GenreService.java,1\7\17364ce06c2b75e85fc57badd0519c816f507ff1
+v
+Fdemo/src/main/java/com/hasikowski/demo/controller/GenreController.java,b\d\bd7ae5c475de7a8ace24642b5f1f9838faf57688
