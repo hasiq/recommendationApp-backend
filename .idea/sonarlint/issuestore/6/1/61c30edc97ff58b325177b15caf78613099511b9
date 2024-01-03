@@ -1,6 +1,12 @@
 
+w
+java:S2293š"YReplace the type specification in this constructor call with the diamond operator ("<>").(ŽÔŽ´8é½„þÌ1
 r
-java:S3655E"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(îí›Äÿÿÿÿÿ8ïŒ²ÒÌ1
+java:S3655J"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(îí›Äÿÿÿÿÿ8ý½„þÌ1
 r
-java:S3655<"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(É¼•ÿùÿÿÿÿ8ïŒ²ÒÌ1
-G	java:S106-"+Replace this use of System.out by a logger.(³¹°8øŒ²ÒÌ1
+java:S3655A"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(É¼•ÿùÿÿÿÿ8ý½„þÌ1
+G	java:S1062"+Replace this use of System.out by a logger.(³¹°8¾„þÌ1
+l
+java:S1128"JRemove this unused import 'org.springframework.data.jpa.repository.Query'.(Äºöïþÿÿÿÿ8‰¾„þÌ1
+i
+java:S1128"LRemove this unused import 'org.springframework.data.repository.query.Param'.(©”šô8Š¾„þÌ1

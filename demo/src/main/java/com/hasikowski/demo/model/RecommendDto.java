@@ -11,7 +11,6 @@ public class RecommendDto {
 
     private List<String> genres;
 
-    private double compatibility;
 
     private int limit = 1000;
 }

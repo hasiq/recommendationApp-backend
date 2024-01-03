@@ -4,6 +4,8 @@ import com.hasikowski.demo.model.GameEntity;
 import com.hasikowski.demo.model.GameRecommendDto;
 import com.hasikowski.demo.model.RecommendDto;
 import com.hasikowski.demo.service.GameService;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -52,4 +54,17 @@ public class GameController {
     public ResponseEntity<List<GameRecommendDto>> recommendGames(@RequestBody RecommendDto recommendDto){
         return this.gameService.recomendGames(recommendDto);
     }
+
+    @GetMapping("/paged")
+    public ResponseEntity<List<GameEntity>> getAllGames(@RequestParam(defaultValue = "0") Integer pageNo, @RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "name") String sortBy){
+        List<GameEntity> list = gameService.findAllSortedPaged(pageNo,pageSize,sortBy);
+
+        return new ResponseEntity<List<GameEntity>>(list, new HttpHeaders(), HttpStatus.OK);
+    }
+
+    @GetMapping("/games/name")
+    public ResponseEntity<List<GameEntity>> getByName(@RequestParam String name){
+        return new ResponseEntity<>(this.gameService.findByName(name), HttpStatus.OK);
+    }
+    
 }

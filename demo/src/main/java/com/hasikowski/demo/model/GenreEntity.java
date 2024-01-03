@@ -22,4 +22,6 @@ public class GenreEntity {
     @ManyToMany(mappedBy = "genre")
     @JsonBackReference
     private List<GameEntity> games;
+
+
 }
