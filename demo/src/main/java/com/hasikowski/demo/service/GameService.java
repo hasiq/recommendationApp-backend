@@ -156,6 +156,6 @@ public class GameService  {
     }
 
     public List<GameEntity> findByName(String name){
-        return gameRepository.findGameEntitiesByName(name);
+        return gameRepository.findGameEntitiesByNameContaining(name);
     }
 }

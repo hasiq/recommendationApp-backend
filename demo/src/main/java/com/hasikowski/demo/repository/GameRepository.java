@@ -30,7 +30,7 @@ public interface GameRepository extends JpaRepository<GameEntity,Long>{
     @Override
     Page<GameEntity> findAll(Pageable pageable);
 
-    List<GameEntity> findGameEntitiesByName(String name);
+    List<GameEntity> findGameEntitiesByNameContaining(String name);
 
 
 }

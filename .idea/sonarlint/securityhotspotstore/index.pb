@@ -27,3 +27,5 @@ p
 @demo/src/main/java/com/hasikowski/demo/service/GenreService.java,1\7\17364ce06c2b75e85fc57badd0519c816f507ff1
 v
 Fdemo/src/main/java/com/hasikowski/demo/controller/GenreController.java,b\d\bd7ae5c475de7a8ace24642b5f1f9838faf57688
+Å
+Qdemo/src/main/java/com/hasikowski/demo/config/OAuth2AutorizationServerConfig.java,f\e\fee50e1995e6e0cb73015409be71d8c1ab06941e
