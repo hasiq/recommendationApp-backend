@@ -1,2 +1,4 @@
 
-s	java:S116"WRename this field "MAX_AGE_SECS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ΥΣν8Ε¦γ«Λ1
+s	java:S116"WRename this field "MAX_AGE_SECS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ΥΣν8¦η«Ν1
+ƒ
+java:S1128"fRemove this unused import 'org.springframework.boot.context.properties.EnableConfigurationProperties'.(ροχ²8έ΅—©Ν1

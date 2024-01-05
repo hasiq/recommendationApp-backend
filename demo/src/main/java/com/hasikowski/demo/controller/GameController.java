@@ -1,14 +1,15 @@
 package com.hasikowski.demo.controller;
 
 import com.hasikowski.demo.model.GameEntity;
-import com.hasikowski.demo.model.GameRecommendDto;
-import com.hasikowski.demo.model.RecommendDto;
+import com.hasikowski.demo.Dto.GameRecommendDto;
+import com.hasikowski.demo.Dto.RecommendDto;
 import com.hasikowski.demo.service.GameService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -65,6 +66,11 @@ public class GameController {
     @GetMapping("/games/name")
     public ResponseEntity<List<GameEntity>> getByName(@RequestParam String name){
         return new ResponseEntity<>(this.gameService.findByName(name), HttpStatus.OK);
+    }
+
+    @GetMapping
+    public String home(Principal principal){
+        return "Hello, " + principal.getName();
     }
     
 }

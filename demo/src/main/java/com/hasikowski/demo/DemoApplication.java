@@ -2,6 +2,7 @@ package com.hasikowski.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -14,6 +15,7 @@ public class DemoApplication {
 	}
 
 }
+
 
 @Configuration
 class WebMvcConfig implements WebMvcConfigurer {

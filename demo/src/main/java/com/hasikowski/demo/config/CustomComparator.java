@@ -1,4 +1,6 @@
-package com.hasikowski.demo.model;
+package com.hasikowski.demo.config;
+
+import com.hasikowski.demo.Dto.GameRecommendDto;
 
 import java.util.Comparator;
 

@@ -1,4 +1,4 @@
-package com.hasikowski.demo.model;
+package com.hasikowski.demo.Dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
