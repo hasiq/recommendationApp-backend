@@ -1,14 +1,8 @@
 
 w
-java:S2293›"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ô´8é½„şÌ1
+java:S2293›"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ô´8ªªüÔÍ1
 r
-java:S3655B"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(É¼•ÿùÿÿÿÿ8ı½„şÌ1
+java:S3655K"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(îí›Äÿÿÿÿÿ8ÓªüÔÍ1
 r
-java:S3655K"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(îí›Äÿÿÿÿÿ8ı½„şÌ1
-G	java:S1063"+Replace this use of System.out by a logger.(³¹°8¾„şÌ1
-l
-java:S1128"JRemove this unused import 'org.springframework.data.jpa.repository.Query'.(Äºöïşÿÿÿÿ8İ‰¶£Í1
-i
-java:S1128"LRemove this unused import 'org.springframework.data.repository.query.Param'.(©”šô8Ş‰¶£Í1
-m
-java:S1128"PRemove this unused import 'org.springframework.web.bind.annotation.CrossOrigin'.(º´Ñ†8É³‹¬Í1
+java:S3655B"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(É¼•ÿùÿÿÿÿ8ÓªüÔÍ1
+G	java:S1063"+Replace this use of System.out by a logger.(³¹°8ÜªüÔÍ1

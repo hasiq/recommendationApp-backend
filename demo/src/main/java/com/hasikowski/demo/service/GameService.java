@@ -157,6 +157,13 @@ public class GameService  {
     }
 
     public List<GameEntity> findByName(String name){
-        return gameRepository.findGameEntitiesByNameContaining(name);
+        return gameRepository.findGameEntitiesByNameContainingIgnoreCase(name);
+    }
+
+
+
+
+    public Long countGames(){
+        return gameRepository.count();
     }
 }

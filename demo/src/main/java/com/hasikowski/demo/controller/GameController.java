@@ -68,9 +68,9 @@ public class GameController {
         return new ResponseEntity<>(this.gameService.findByName(name), HttpStatus.OK);
     }
 
-    @GetMapping
-    public String home(Principal principal){
-        return "Hello, " + principal.getName();
+    @GetMapping("/count")
+    public Long countAllGames(){
+        return gameService.countGames();
     }
     
 }
