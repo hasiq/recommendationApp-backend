@@ -66,7 +66,7 @@ public class GameController {
 
     @GetMapping("/games/name")
     public ResponseEntity<List<GameEntity>> getByName(@RequestParam String name){
-        return new ResponseEntity<>(this.gameService.findByName(name), HttpStatus.OK);
+        return this.gameService.findByName(name);
     }
 
     @GetMapping("/count")

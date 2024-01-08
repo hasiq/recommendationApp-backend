@@ -1,12 +1,14 @@
 
 w
-java:S2293¢"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ô´8î•‹ÍÎ1
+java:S2293§"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ô´8ãİõĞÎ1
 r
-java:S3655Q"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(îí›Äÿÿÿÿÿ8‚–‹ÍÎ1
+java:S3655M"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(É¼•ÿùÿÿÿÿ8õİõĞÎ1
 r
-java:S3655H"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(É¼•ÿùÿÿÿÿ8‚–‹ÍÎ1
-G	java:S1069"+Replace this use of System.out by a logger.(³¹°8‡–‹ÍÎ1
+java:S3655V"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(îí›Äÿÿÿÿÿ8õİõĞÎ1
+_
+java:S25833"CChange this condition so that it does not always evaluate to "true"(Û‰ç)8öİõĞÎ1
+G	java:S106>"+Replace this use of System.out by a logger.(³¹°8ûİõĞÎ1
 Z
-java:S1128"8Remove this unused import 'java.util.stream.Collectors'.(Óóº´úÿÿÿÿ8‘–‹ÍÎ1
+java:S1128"8Remove this unused import 'java.util.stream.Collectors'.(Óóº´úÿÿÿÿ8ƒŞõĞÎ1
 Z
-java:S1128"8Remove this unused import 'java.util.stream.Collectors'.(¢”•¤ıÿÿÿÿ8‘–‹ÍÎ1
+java:S1128"8Remove this unused import 'java.util.stream.Collectors'.(¢”•¤ıÿÿÿÿ8ƒŞõĞÎ1

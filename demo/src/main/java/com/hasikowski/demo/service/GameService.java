@@ -9,6 +9,7 @@ import com.hasikowski.demo.repository.GameRepository;
 import com.hasikowski.demo.repository.GenreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -42,8 +43,12 @@ public class GameService  {
     }
 
     public ResponseEntity<GameEntity> addGame(GameEntityDto game){
+        List<GameEntity> games = gameRepository.findByNameContainingIgnoreCase(game.getName());
+        if(!games.isEmpty())
+        {
+            return  new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
         if(game != null) {
-
             GameEntity gameEntity = new GameEntity(game.getName(), game.getDescription(), game.getAuthor(), getGenreFromDto(game), game.getReleaseDate());
             return new ResponseEntity<>(this.gameRepository.save(gameEntity), HttpStatusCode.valueOf(201));
         }
@@ -163,8 +168,12 @@ public class GameService  {
         }
     }
 
-    public List<GameEntity> findByName(String name){
-        return gameRepository.findByNameContainingIgnoreCase(name);
+    public ResponseEntity<List<GameEntity>> findByName(String name){
+        if(name.equals(" ") || name.equals("") || gameRepository.findByNameContainingIgnoreCase(name).isEmpty())
+        {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(gameRepository.findByNameContainingIgnoreCase(name), HttpStatus.OK);
     }
 
     public List<GenreEntity> getGenreFromDto(GameEntityDto game){
