@@ -30,7 +30,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests((request) -> request.requestMatchers(HttpMethod.GET, "/genres").permitAll())
                 .authorizeHttpRequests((request) -> request.requestMatchers(HttpMethod.POST, "/register").permitAll())
                 .authorizeHttpRequests((request) -> request.requestMatchers(HttpMethod.GET, "/games/{id}").permitAll())
-                .authorizeHttpRequests((request) -> request.requestMatchers(HttpMethod.GET, "/count").permitAll()
+                .authorizeHttpRequests((request) -> request.requestMatchers(HttpMethod.GET, "/count").permitAll())
+                .authorizeHttpRequests((request) -> request.requestMatchers(HttpMethod.POST, "/game").permitAll())
+                .authorizeHttpRequests((request) -> request.requestMatchers(HttpMethod.PUT, "/games/").permitAll()
                                 .anyRequest().authenticated());
         return httpSecurity.build();
     }

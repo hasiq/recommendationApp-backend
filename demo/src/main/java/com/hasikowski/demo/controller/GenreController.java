@@ -2,6 +2,7 @@ package com.hasikowski.demo.controller;
 
 import com.hasikowski.demo.model.GenreEntity;
 import com.hasikowski.demo.service.GenreService;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,5 +22,12 @@ public class GenreController {
     @GetMapping("/genres")
     public ResponseEntity<List<GenreEntity>> findAll(){
         return this.genreService.findAll();
+    }
+
+
+    @GetMapping("/genre")
+    public ResponseEntity<GenreEntity> findByName(@Param(value = "name") String name){
+        System.out.println(name);
+        return this.genreService.findByName(name);
     }
 }

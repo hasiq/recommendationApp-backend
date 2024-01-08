@@ -1,5 +1,6 @@
 package com.hasikowski.demo.controller;
 
+import com.hasikowski.demo.Dto.GameEntityDto;
 import com.hasikowski.demo.model.GameEntity;
 import com.hasikowski.demo.Dto.GameRecommendDto;
 import com.hasikowski.demo.Dto.RecommendDto;
@@ -27,7 +28,7 @@ public class GameController {
     }
 
     @PostMapping("/game")
-    public ResponseEntity<GameEntity> addGame(@RequestBody GameEntity game){
+    public ResponseEntity<GameEntity> addGame(@RequestBody GameEntityDto game){
         return this.gameService.addGame(game);
     }
 
@@ -42,7 +43,7 @@ public class GameController {
     }
 
     @PutMapping("/games/{id}")
-    public ResponseEntity<GameEntity> editGame(@PathVariable Long id, @RequestBody GameEntity game){
+    public ResponseEntity<GameEntity> editGame(@PathVariable Long id, @RequestBody GameEntityDto game){
         return this.gameService.editGame(id,game);
     }
 
@@ -72,5 +73,6 @@ public class GameController {
     public Long countAllGames(){
         return gameService.countGames();
     }
+
     
 }

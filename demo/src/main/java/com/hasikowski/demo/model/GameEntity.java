@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
@@ -11,6 +12,8 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "games")
 public class GameEntity {
 
@@ -38,4 +41,11 @@ public class GameEntity {
    private String releaseDate;
 
 
+    public GameEntity(String name, String description, String author, List<GenreEntity> genre, String releaseDate) {
+        this.name = name;
+        this.description = description;
+        this.author = author;
+        this.genre = genre;
+        this.releaseDate = releaseDate;
+    }
 }

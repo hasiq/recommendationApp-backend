@@ -3,7 +3,6 @@ package com.hasikowski.demo.repository;
 import com.hasikowski.demo.model.GenreEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
@@ -12,4 +11,6 @@ public interface GenreRepository extends JpaRepository<GenreEntity,Long> {
 
     @Override
     List<GenreEntity> findAll();
+
+    GenreEntity getGenreEntityByName(String name);
 }

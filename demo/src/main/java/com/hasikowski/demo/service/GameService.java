@@ -1,29 +1,33 @@
 package com.hasikowski.demo.service;
 
+import com.hasikowski.demo.Dto.GameEntityDto;
 import com.hasikowski.demo.Dto.GameRecommendDto;
 import com.hasikowski.demo.Dto.RecommendDto;
 import com.hasikowski.demo.config.CustomComparator;
 import com.hasikowski.demo.model.*;
 import com.hasikowski.demo.repository.GameRepository;
+import com.hasikowski.demo.repository.GenreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.*;
 
 @Service
 public class GameService  {
 
     private final GameRepository gameRepository;
+    private final GenreRepository genreRepository;
 
     @Autowired
-    public GameService(GameRepository gameRepository) {
+    public GameService(GameRepository gameRepository, GenreRepository genreRepository) {
         this.gameRepository = gameRepository;
+        this.genreRepository = genreRepository;
     }
 
 
@@ -37,9 +41,11 @@ public class GameService  {
         }
     }
 
-    public ResponseEntity<GameEntity> addGame(GameEntity game){
+    public ResponseEntity<GameEntity> addGame(GameEntityDto game){
         if(game != null) {
-            return new ResponseEntity<>(this.gameRepository.save(game), HttpStatusCode.valueOf(201));
+
+            GameEntity gameEntity = new GameEntity(game.getName(), game.getDescription(), game.getAuthor(), getGenreFromDto(game), game.getReleaseDate());
+            return new ResponseEntity<>(this.gameRepository.save(gameEntity), HttpStatusCode.valueOf(201));
         }
         else {
             return  new ResponseEntity<>(HttpStatusCode.valueOf(403));
@@ -70,11 +76,12 @@ public class GameService  {
         }
     }
 
-    public ResponseEntity<GameEntity> editGame(Long id, GameEntity game){
+    public ResponseEntity<GameEntity> editGame(Long id, GameEntityDto game){
         if(gameRepository.existsById(id)){
             GameEntity game1 = gameRepository.findById(id).get();
             game1.setName(game.getName());
-            game1.setGenre(game.getGenre());
+
+            game1.setGenre(getGenreFromDto(game));
             game1.setAuthor(game.getAuthor());
             game1.setDescription(game.getDescription());
             return new ResponseEntity<>(gameRepository.save(game1),HttpStatusCode.valueOf(202));
@@ -157,11 +164,16 @@ public class GameService  {
     }
 
     public List<GameEntity> findByName(String name){
-        return gameRepository.findGameEntitiesByNameContainingIgnoreCase(name);
+        return gameRepository.findByNameContainingIgnoreCase(name);
     }
 
-
-
+    public List<GenreEntity> getGenreFromDto(GameEntityDto game){
+        List<GenreEntity> genres = new LinkedList<>();
+        for (String g : game.getGenre()){
+            genres.add(genreRepository.getGenreEntityByName(g));
+        }
+        return genres;
+    }
 
     public Long countGames(){
         return gameRepository.count();

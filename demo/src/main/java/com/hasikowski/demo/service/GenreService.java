@@ -21,4 +21,9 @@ public class GenreService {
     public ResponseEntity<List<GenreEntity>> findAll(){
         return new ResponseEntity<>(genreRepository.findAll(), HttpStatusCode.valueOf(200));
     }
+
+    public ResponseEntity<GenreEntity> findByName(String name){
+        String lowerCase = name.toLowerCase();
+        return new ResponseEntity<>(genreRepository.getGenreEntityByName(lowerCase), HttpStatusCode.valueOf(200));
+    }
 }
