@@ -28,4 +28,6 @@ public class GameEntityDto {
 
 
     private String releaseDate;
+
+    private String steamLink;
 }

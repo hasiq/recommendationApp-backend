@@ -33,8 +33,8 @@ public class GameController {
     }
 
     @DeleteMapping("/games/{id}")
-    public ResponseEntity<GameEntity> deleteGame(@PathVariable Long id){
-        return this.gameService.deleteGame(id);
+    public ResponseEntity<GameEntity> deleteGame(@PathVariable Long id, @RequestHeader("Authorization") String token){
+        return this.gameService.deleteGame(id, token);
     }
 
     @GetMapping("/games/{id}")
@@ -43,8 +43,8 @@ public class GameController {
     }
 
     @PutMapping("/games/{id}")
-    public ResponseEntity<GameEntity> editGame(@PathVariable Long id, @RequestBody GameEntityDto game){
-        return this.gameService.editGame(id,game);
+    public ResponseEntity<GameEntity> editGame(@PathVariable Long id, @RequestBody GameEntityDto game, @RequestHeader("Authorization") String token){
+        return this.gameService.editGame(token,id,game);
     }
 
     @PostMapping("/games/multiple")

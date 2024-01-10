@@ -7,7 +7,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class GenreService {
@@ -19,7 +21,7 @@ public class GenreService {
     }
 
     public ResponseEntity<List<GenreEntity>> findAll(){
-        return new ResponseEntity<>(genreRepository.findAll(), HttpStatusCode.valueOf(200));
+        return new ResponseEntity<>(genreRepository.findAll().stream().sorted(Comparator.comparing(GenreEntity::getName)).toList(), HttpStatusCode.valueOf(200));
     }
 
     public ResponseEntity<GenreEntity> findByName(String name){

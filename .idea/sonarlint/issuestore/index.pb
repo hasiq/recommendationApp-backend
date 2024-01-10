@@ -49,3 +49,9 @@ p
 @demo/src/main/java/com/hasikowski/demo/Dto/GameRecommendDto.java,0\3\03000c62f165585de0073eb9a2cfd2803b58d17a
 m
 =demo/src/main/java/com/hasikowski/demo/Dto/GameEntityDto.java,a\4\a4aed31310b15d28d14f239469448848afccbad6
+g
+7demo/src/main/java/com/hasikowski/demo/Dto/UserDto.java,d\c\dc60ba59bdde4c44abf351092e02356dae2a34d7
+n
+>demo/src/main/java/com/hasikowski/demo/Dto/CredentialsDto.java,a\6\a697c5bbac70e8a639ce26bd6a29bc0ed0c8a5b0
+s
+Cdemo/src/main/java/com/hasikowski/demo/config/CustomComparator.java,e\f\ef92e85bb8091f9c16f21714a66236b2234af438

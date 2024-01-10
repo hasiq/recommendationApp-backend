@@ -1,18 +1,30 @@
 package com.hasikowski.demo.service;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.hasikowski.demo.Dto.GameEntityDto;
 import com.hasikowski.demo.Dto.GameRecommendDto;
 import com.hasikowski.demo.Dto.RecommendDto;
+import com.hasikowski.demo.Dto.UserDto;
 import com.hasikowski.demo.config.CustomComparator;
+import com.hasikowski.demo.config.UserAuthProvider;
 import com.hasikowski.demo.model.*;
 import com.hasikowski.demo.repository.GameRepository;
 import com.hasikowski.demo.repository.GenreRepository;
+import com.hasikowski.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.jwt.Jwt;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -25,10 +37,16 @@ public class GameService  {
     private final GameRepository gameRepository;
     private final GenreRepository genreRepository;
 
+    private final UserRepository userRepository;
+
+    private final UserAuthProvider userAuthProvider;
+
     @Autowired
-    public GameService(GameRepository gameRepository, GenreRepository genreRepository) {
+    public GameService(GameRepository gameRepository, GenreRepository genreRepository, UserRepository userRepository, UserAuthProvider userAuthProvider) {
         this.gameRepository = gameRepository;
         this.genreRepository = genreRepository;
+        this.userRepository = userRepository;
+        this.userAuthProvider = userAuthProvider;
     }
 
 
@@ -49,7 +67,7 @@ public class GameService  {
             return  new ResponseEntity<>(HttpStatus.CONFLICT);
         }
         if(game != null) {
-            GameEntity gameEntity = new GameEntity(game.getName(), game.getDescription(), game.getAuthor(), getGenreFromDto(game), game.getReleaseDate());
+            GameEntity gameEntity = new GameEntity(game.getName(), game.getDescription(), game.getAuthor(), getGenreFromDto(game), game.getReleaseDate(), game.getSteamLink());
             return new ResponseEntity<>(this.gameRepository.save(gameEntity), HttpStatusCode.valueOf(201));
         }
         else {
@@ -57,7 +75,12 @@ public class GameService  {
         }
     }
 
-    public ResponseEntity<GameEntity> deleteGame(Long id){
+    public ResponseEntity<GameEntity> deleteGame(Long id, @RequestHeader("Authorization") String token){
+        User user = validateTokenAndReturnUser(token);
+        if(!user.getRole().equals("admin"))
+        {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
         if(!this.gameRepository.existsById(id)) {
             System.out.println("Nie istnieje taka gra");
             return new ResponseEntity<>(HttpStatusCode.valueOf(403));
@@ -81,7 +104,12 @@ public class GameService  {
         }
     }
 
-    public ResponseEntity<GameEntity> editGame(Long id, GameEntityDto game){
+    public ResponseEntity<GameEntity> editGame(@RequestHeader("Authorization") String token, Long id, GameEntityDto game){
+        User user = validateTokenAndReturnUser(token);
+        if(!user.getRole().equals("admin"))
+        {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
         if(gameRepository.existsById(id)){
             GameEntity game1 = gameRepository.findById(id).get();
             game1.setName(game.getName());
@@ -89,6 +117,7 @@ public class GameService  {
             game1.setGenre(getGenreFromDto(game));
             game1.setAuthor(game.getAuthor());
             game1.setDescription(game.getDescription());
+            game1.setSteamLink(game.getSteamLink());
             return new ResponseEntity<>(gameRepository.save(game1),HttpStatusCode.valueOf(202));
         }
         else{
@@ -113,6 +142,7 @@ public class GameService  {
         }
         CustomComparator sort = new CustomComparator();
         list1.sort(sort);
+        Collections.reverse(list1);
         int size = Math.min(list1.size(), recommend.getLimit());
         list1 = list1.subList(0, size);
         return new ResponseEntity<>(list1,HttpStatusCode.valueOf(200));
@@ -150,9 +180,12 @@ public class GameService  {
                 }
         }
         for (int i = 0; i < v1.size(); i++){
-            sum += Math.pow(v2.get(i) - v1.get(i), 2);
+            sum += (v2.get(i) * v1.get(i));
         }
-        return Math.sqrt(sum);
+        double val1 = norm(v1);
+        double val2 = norm(v2);
+
+        return sum / (val1 * val2);
     }
 
     public List<GameEntity> findAllSortedPaged(Integer pageNo, Integer pageSize, String sortBy){
@@ -186,5 +219,25 @@ public class GameService  {
 
     public Long countGames(){
         return gameRepository.count();
+    }
+
+    public User validateTokenAndReturnUser(String token){
+        String substring = token.substring(7, token.length());
+        Authentication authentication = userAuthProvider.validateToken(substring);
+
+        UserDto user1 = (UserDto) authentication.getPrincipal();
+        System.out.println(user1);
+
+        User user = userRepository.findUserByFirstName(user1.getFirstName()).get();
+        System.out.println(user);
+        return user;
+    }
+
+    public Double norm(List<Double> vector){
+        double sum = 0;
+        for (Double d : vector){
+            sum += d * d;
+        }
+        return Math.sqrt(sum);
     }
 }

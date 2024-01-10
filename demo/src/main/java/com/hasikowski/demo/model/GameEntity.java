@@ -40,12 +40,15 @@ public class GameEntity {
 
    private String releaseDate;
 
+   private String steamLink;
 
-    public GameEntity(String name, String description, String author, List<GenreEntity> genre, String releaseDate) {
+
+    public GameEntity(String name, String description, String author, List<GenreEntity> genre, String releaseDate, String steamLink) {
         this.name = name;
         this.description = description;
         this.author = author;
         this.genre = genre;
         this.releaseDate = releaseDate;
+        this.steamLink = steamLink;
     }
 }

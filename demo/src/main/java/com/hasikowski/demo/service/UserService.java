@@ -8,6 +8,7 @@ import com.hasikowski.demo.model.User;
 import com.hasikowski.demo.Dto.UserDto;
 import com.hasikowski.demo.repository.UserRepository;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -50,6 +51,11 @@ public class UserService {
         User savedUser = userRepository.save(user);
 
         return userMapper.toUserDto(savedUser);
+    }
+
+    public User findUserByFirstName(String firstName){
+        User user = userRepository.findUserByFirstName(firstName).orElseThrow(() -> new AppException("Unknown user", HttpStatus.NOT_FOUND));
+        return user;
     }
 
 }
