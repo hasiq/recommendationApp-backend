@@ -1,32 +1,22 @@
 
 w
-java:S2293È"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ô´8¡ª“ Ï1
+java:S2293¾"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ô´8°œÃğĞ1
+r
+java:S3655h"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(îí›Äÿÿÿÿÿ8ÌœÃğĞ1
+s
+java:S3655‡"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(éÀ¯ùÿÿÿÿ8ÌœÃğĞ1
 n
-java:S3655ç"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(¡é£÷8¿ª“ Ï1
+java:S3655ì"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(çà„8ÌœÃğĞ1
+s
+java:S3655İ"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(»ãå­ıÿÿÿÿ8ÌœÃğĞ1
 r
-java:S3655d"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(É¼•ÿùÿÿÿÿ8¿ª“ Ï1
-r
-java:S3655r"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(îí›Äÿÿÿÿÿ8¿ª“ Ï1
+java:S3655Z"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(É¼•ÿùÿÿÿÿ8ÌœÃğĞ1
+¬
+java:S4449ú"ˆAnnotate the parameter with @javax.annotation.Nullable in constructor declaration, or make sure that null can not be passed as argument.(ÕÄÑœøÿÿÿÿ8ÌœÃğĞ1
 _
-java:S2583E"CChange this condition so that it does not always evaluate to "true"(Û‰ç)8¿ª“ Ï1
-G	java:S106U"+Replace this use of System.out by a logger.(³¹°8Êª“ Ï1
-M	java:S106å"+Replace this use of System.out by a logger.(õš‡àúÿÿÿÿ8Ùª“ Ï1
-H	java:S106è"+Replace this use of System.out by a logger.(Ø¼¢ƒ8Ùª“ Ï1
-K
-java:S1128".Remove this unused import 'com.auth0.jwt.JWT'.(å©ğ›8Úª“ Ï1
-S
-java:S1128"6Remove this unused import 'com.auth0.jwt.JWTVerifier'.(ã¯¶ã8Úª“ Ï1
-\
-java:S1128"?Remove this unused import 'com.auth0.jwt.algorithms.Algorithm'.(ÒãšÂ8Úª“ Ï1
-]
-java:S1128"@Remove this unused import 'com.auth0.jwt.interfaces.DecodedJWT'.(éÀ¼”8Úª“ Ï1
-y
-java:S1128"\Remove this unused import 'org.springframework.security.core.context.SecurityContextHolder'.(ŒÄæë8Úª“ Ï1
-d
-java:S1128"HRemove this unused import 'org.springframework.security.oauth2.jwt.Jwt'.(’¹•98Úª“ Ï1
-“
-java:S1128"vRemove this unused import 'org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken'.(˜Ùò¹8Úª“ Ï1
-Z
-java:S1128"8Remove this unused import 'java.util.stream.Collectors'.(Óóº´úÿÿÿÿ8Úª“ Ï1
-Z
-java:S1128 "8Remove this unused import 'java.util.stream.Collectors'.(¢”•¤ıÿÿÿÿ8Úª“ Ï1
+java:S2583;"CChange this condition so that it does not always evaluate to "true"(Û‰ç)8ÌœÃğĞ1
+G	java:S106K"+Replace this use of System.out by a logger.(³¹°8ÓœÃğĞ1
+M	java:S106Û"+Replace this use of System.out by a logger.(õš‡àúÿÿÿÿ8İœÃğĞ1
+H	java:S106Ş"+Replace this use of System.out by a logger.(Ø¼¢ƒ8İœÃğĞ1
+G
+java:S5413‹")Verify that "remove()" is used correctly.(„µĞò8àœÃğĞ1

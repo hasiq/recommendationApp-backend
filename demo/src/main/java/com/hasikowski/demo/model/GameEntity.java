@@ -42,6 +42,17 @@ public class GameEntity {
 
    private String steamLink;
 
+   private String review;
+
+   @ManyToMany
+   @JoinTable(
+           name = "game_user_relation",
+           joinColumns = @JoinColumn(name = "game_id"),
+           inverseJoinColumns = @JoinColumn(name = "user_id")
+   )
+   @JsonManagedReference
+   private List<UserEntity> users;
+
 
     public GameEntity(String name, String description, String author, List<GenreEntity> genre, String releaseDate, String steamLink) {
         this.name = name;
@@ -50,5 +61,15 @@ public class GameEntity {
         this.genre = genre;
         this.releaseDate = releaseDate;
         this.steamLink = steamLink;
+    }
+
+    public GameEntity(String name, String description, String author, List<GenreEntity> genre, String releaseDate, String steamLink, String review) {
+        this.name = name;
+        this.description = description;
+        this.author = author;
+        this.genre = genre;
+        this.releaseDate = releaseDate;
+        this.steamLink = steamLink;
+        this.review = review;
     }
 }

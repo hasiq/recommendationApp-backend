@@ -10,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -54,7 +53,7 @@ public class GameController {
 
     @PostMapping("/games/recommend")
     public ResponseEntity<List<GameRecommendDto>> recommendGames(@RequestBody RecommendDto recommendDto){
-        return this.gameService.recomendGames(recommendDto);
+        return this.gameService.recommendGames(recommendDto);
     }
 
     @GetMapping("/paged")
@@ -74,5 +73,20 @@ public class GameController {
         return gameService.countGames();
     }
 
-    
+
+    @PostMapping("/favorite/{id}")
+    public ResponseEntity<GameEntity> addFavoriteGames(@PathVariable Long id, @RequestHeader(value = "Authorization") String token){
+        return gameService.addFavoriteGames(id, token);
+    }
+
+
+    @GetMapping("/favorite")
+    public ResponseEntity<List<GameEntity>> getFavoriteGames(@RequestHeader(value = "Authorization") String token){
+        return gameService.getFavoriteGames(token);
+    }
+
+    @DeleteMapping("/favorite/{id}")
+    public ResponseEntity<GameEntity> deleteFavoriteGame(@PathVariable Long id, @RequestHeader(value = "Authorization") String token){
+        return gameService.deleteFavoriteGames(id, token);
+    }
 }

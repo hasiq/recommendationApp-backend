@@ -4,11 +4,10 @@ import com.hasikowski.demo.exceptions.AppException;
 import com.hasikowski.demo.mapper.UserMapper;
 import com.hasikowski.demo.Dto.CredentialsDto;
 import com.hasikowski.demo.Dto.SignUpDto;
-import com.hasikowski.demo.model.User;
+import com.hasikowski.demo.model.UserEntity;
 import com.hasikowski.demo.Dto.UserDto;
 import com.hasikowski.demo.repository.UserRepository;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +28,7 @@ public class UserService {
     }
 
     public UserDto login(CredentialsDto credentialsDto){
-        User user = userRepository.findUserByLogin(credentialsDto.login())
+        UserEntity user = userRepository.findUserByLogin(credentialsDto.login())
                 .orElseThrow(() -> new AppException("Unknown user", HttpStatus.NOT_FOUND));
 
         if(passwordEncoder.matches(CharBuffer.wrap(credentialsDto.password()), user.getPassword())){
@@ -39,22 +38,23 @@ public class UserService {
     }
 
     public UserDto register(SignUpDto signUpDto){
-        Optional<User> oUser = userRepository.findUserByLogin(signUpDto.login());
+        Optional<UserEntity> oUser = userRepository.findUserByLogin(signUpDto.login());
 
         if (oUser.isPresent()){
             throw new AppException("Login already exists", HttpStatus.BAD_REQUEST);
         }
 
-        User user = userMapper.signUpToUser(signUpDto);
+        UserEntity user = userMapper.signUpToUser(signUpDto);
 
         user.setPassword(passwordEncoder.encode(CharBuffer.wrap(signUpDto.password())));
-        User savedUser = userRepository.save(user);
+        user.setRole("user");
+        UserEntity savedUser = userRepository.save(user);
 
         return userMapper.toUserDto(savedUser);
     }
 
-    public User findUserByFirstName(String firstName){
-        User user = userRepository.findUserByFirstName(firstName).orElseThrow(() -> new AppException("Unknown user", HttpStatus.NOT_FOUND));
+    public UserEntity findUserByFirstName(String firstName){
+        UserEntity user = userRepository.findUserByFirstName(firstName).orElseThrow(() -> new AppException("Unknown user", HttpStatus.NOT_FOUND));
         return user;
     }
 

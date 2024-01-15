@@ -10,7 +10,5 @@ import java.util.List;
 public class RecommendDto {
 
     private List<String> genres;
-
-
     private int limit = 1000;
 }

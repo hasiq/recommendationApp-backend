@@ -17,5 +17,7 @@ public class GameRecommendDto {
 
     private  double compatibility;
 
+    private String review;
+
 }
 

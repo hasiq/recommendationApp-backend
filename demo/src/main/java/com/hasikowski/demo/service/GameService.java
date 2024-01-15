@@ -1,9 +1,5 @@
 package com.hasikowski.demo.service;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.JWTVerifier;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.interfaces.DecodedJWT;
 import com.hasikowski.demo.Dto.GameEntityDto;
 import com.hasikowski.demo.Dto.GameRecommendDto;
 import com.hasikowski.demo.Dto.RecommendDto;
@@ -20,16 +16,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.oauth2.jwt.Jwt;
-import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestHeader;
 
 import java.util.*;
-import java.util.stream.Collectors;
-
-import static java.util.stream.Collectors.*;
 
 @Service
 public class GameService  {
@@ -76,7 +66,7 @@ public class GameService  {
     }
 
     public ResponseEntity<GameEntity> deleteGame(Long id, @RequestHeader("Authorization") String token){
-        User user = validateTokenAndReturnUser(token);
+        UserEntity user = validateTokenAndReturnUser(token);
         if(!user.getRole().equals("admin"))
         {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -105,7 +95,7 @@ public class GameService  {
     }
 
     public ResponseEntity<GameEntity> editGame(@RequestHeader("Authorization") String token, Long id, GameEntityDto game){
-        User user = validateTokenAndReturnUser(token);
+        UserEntity user = validateTokenAndReturnUser(token);
         if(!user.getRole().equals("admin"))
         {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -129,12 +119,12 @@ public class GameService  {
         return new ResponseEntity<>(this.gameRepository.saveAll(games), HttpStatusCode.valueOf(201));
     }
 
-    public ResponseEntity<List<GameRecommendDto>> recomendGames(RecommendDto recommend){
+    public ResponseEntity<List<GameRecommendDto>> recommendGames(RecommendDto recommend){
         List<GameEntity> list = gameRepository.findAll();
         List<GameRecommendDto> list1 = new ArrayList<>();
         for (GameEntity g : list){
            double number = compare(g.getGenre(),recommend.getGenres());
-               list1.add(new GameRecommendDto(g.getId(), g.getName(), number));
+               list1.add(new GameRecommendDto(g.getId(), g.getName(), number, g.getReview()));
         }
         if(list1.isEmpty())
         {
@@ -221,14 +211,14 @@ public class GameService  {
         return gameRepository.count();
     }
 
-    public User validateTokenAndReturnUser(String token){
+    public UserEntity validateTokenAndReturnUser(String token){
         String substring = token.substring(7, token.length());
         Authentication authentication = userAuthProvider.validateToken(substring);
 
         UserDto user1 = (UserDto) authentication.getPrincipal();
         System.out.println(user1);
 
-        User user = userRepository.findUserByFirstName(user1.getFirstName()).get();
+        UserEntity user = userRepository.findUserByFirstName(user1.getFirstName()).get();
         System.out.println(user);
         return user;
     }
@@ -240,4 +230,44 @@ public class GameService  {
         }
         return Math.sqrt(sum);
     }
+
+    public ResponseEntity<GameEntity> addFavoriteGames(Long id, String token){
+        if(gameRepository.existsById(id)) {
+            GameEntity byId = gameRepository.findById(id).get();
+            UserEntity userEntity = validateTokenAndReturnUser(token);
+            for (UserEntity u : byId.getUsers()){
+                if(u.getFirstName().equals(userEntity.getFirstName()))
+                {
+                    return new ResponseEntity<>(HttpStatus.CONFLICT);
+                }
+            }
+                byId.getUsers().add(userEntity);
+                gameRepository.save(byId);
+
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    public ResponseEntity<List<GameEntity>> getFavoriteGames(String token){
+        UserEntity userEntity = validateTokenAndReturnUser(token);
+        return new ResponseEntity<>(userEntity.getGames(),HttpStatus.OK);
+    }
+
+    public ResponseEntity<GameEntity> deleteFavoriteGames(Long id, String token){
+        if(!gameRepository.existsById(id)){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+       GameEntity game = gameRepository.findById(id).get();
+           UserEntity userEntity = validateTokenAndReturnUser(token);
+           for (int i = 0; i < game.getUsers().size(); i++) {
+               if (game.getUsers().get(i).getFirstName().equals(userEntity.getFirstName())) {
+                   game.getUsers().remove(i);
+               }
+           }
+           gameRepository.save(game);
+           return new ResponseEntity<>(HttpStatus.OK);
+       }
 }

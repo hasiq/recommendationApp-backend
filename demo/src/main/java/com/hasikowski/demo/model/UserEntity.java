@@ -1,7 +1,10 @@
 package com.hasikowski.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -9,7 +12,7 @@ import lombok.*;
 @Data
 @Entity
 @Table(name = "Users")
-public class User {
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -24,4 +27,8 @@ public class User {
     private String password;
 
     private String role;
+
+    @ManyToMany(mappedBy = "users")
+    @JsonBackReference
+    private List<GameEntity> games;
 }
