@@ -21,12 +21,9 @@ public class GameController {
         this.gameService = gameService;
     }
 
-    @GetMapping("/games")
-    public ResponseEntity<List<GameEntity>> getAllGames(){
-        return  this.gameService.findAll();
-    }
 
-    @PostMapping("/game")
+
+    @PostMapping("/games")
     public ResponseEntity<GameEntity> addGame(@RequestBody GameEntityDto game){
         return this.gameService.addGame(game);
     }
@@ -46,17 +43,14 @@ public class GameController {
         return this.gameService.editGame(token,id,game);
     }
 
-    @PostMapping("/games/multiple")
-    public ResponseEntity<List<GameEntity>> addMultipleGames(@RequestBody List<GameEntity> gameEntities){
-        return this.gameService.addGames(gameEntities);
-    }
+
 
     @PostMapping("/games/recommend")
     public ResponseEntity<List<GameRecommendDto>> recommendGames(@RequestBody RecommendDto recommendDto){
         return this.gameService.recommendGames(recommendDto);
     }
 
-    @GetMapping("/paged")
+    @GetMapping("/games")
     public ResponseEntity<List<GameEntity>> getAllGames(@RequestParam(defaultValue = "0") Integer pageNo, @RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "name") String sortBy){
         List<GameEntity> list = gameService.findAllSortedPaged(pageNo,pageSize,sortBy);
 

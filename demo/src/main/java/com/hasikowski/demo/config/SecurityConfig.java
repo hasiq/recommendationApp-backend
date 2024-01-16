@@ -25,14 +25,12 @@ public class SecurityConfig {
                 .sessionManagement(customizer -> customizer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests((requests) ->
                         requests.requestMatchers(HttpMethod.POST,  "login").permitAll())
-                .authorizeHttpRequests((request) -> request.requestMatchers(HttpMethod.GET, "paged").permitAll())
+                .authorizeHttpRequests((request) -> request.requestMatchers(HttpMethod.GET, "games").permitAll())
                 .authorizeHttpRequests((request) -> request.requestMatchers(HttpMethod.POST, "/games/recommend").permitAll())
                 .authorizeHttpRequests((request) -> request.requestMatchers(HttpMethod.GET, "/genres").permitAll())
                 .authorizeHttpRequests((request) -> request.requestMatchers(HttpMethod.POST, "/register").permitAll())
                 .authorizeHttpRequests((request) -> request.requestMatchers(HttpMethod.GET, "/games/{id}").permitAll())
-                .authorizeHttpRequests((request) -> request.requestMatchers(HttpMethod.GET, "/count").permitAll())
-                .authorizeHttpRequests((request) -> request.requestMatchers(HttpMethod.POST, "/game").permitAll())
-                .authorizeHttpRequests((request) -> request.requestMatchers(HttpMethod.PUT, "/games/").permitAll()
+                .authorizeHttpRequests((request) -> request.requestMatchers(HttpMethod.GET, "/count").permitAll()
                                 .anyRequest().authenticated());
         return httpSecurity.build();
     }
