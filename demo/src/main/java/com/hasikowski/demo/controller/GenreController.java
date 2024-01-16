@@ -27,7 +27,6 @@ public class GenreController {
 
     @GetMapping("/genre")
     public ResponseEntity<GenreEntity> findByName(@Param(value = "name") String name){
-        System.out.println(name);
         return this.genreService.findByName(name);
     }
 }
