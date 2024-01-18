@@ -45,3 +45,5 @@ l
 <demo/src/main/java/com/hasikowski/demo/Dto/RecommendDto.java,1\a\1a52defccdbfcb7fe9602f5a82a753e63c7b3441
 p
 @demo/src/main/java/com/hasikowski/demo/Dto/GameRecommendDto.java,0\3\03000c62f165585de0073eb9a2cfd2803b58d17a
+l
+<demo/src/main/java/com/hasikowski/demo/model/UserEntity.java,1\6\160adf5ade22d00e796896abc1d43a26233a1c4b

@@ -122,13 +122,13 @@ public class GameService  {
     public ResponseEntity<List<GameRecommendDto>> recommendGames(RecommendDto recommend){
         List<GameEntity> list = gameRepository.findAll();
         List<GameRecommendDto> list1 = new ArrayList<>();
+        if(recommend.getGenres().isEmpty())
+        {
+            return new ResponseEntity<>(null ,HttpStatusCode.valueOf(204));
+        }
         for (GameEntity g : list){
            double number = compare(g.getGenre(),recommend.getGenres());
                list1.add(new GameRecommendDto(g.getId(), g.getName(), number, g.getReview()));
-        }
-        if(list1.isEmpty())
-        {
-            return new ResponseEntity<>(HttpStatusCode.valueOf(204));
         }
         CustomComparator sort = new CustomComparator();
         list1.sort(sort);
