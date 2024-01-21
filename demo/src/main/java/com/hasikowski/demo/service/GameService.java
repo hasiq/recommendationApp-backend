@@ -127,12 +127,12 @@ public class GameService  {
             return new ResponseEntity<>(null ,HttpStatusCode.valueOf(204));
         }
         for (GameEntity g : list){
-           double number = compare(g.getGenre(),recommend.getGenres());
+           double number = 1 - compare(g.getGenre(),recommend.getGenres());
                list1.add(new GameRecommendDto(g.getId(), g.getName(), number, g.getReview()));
         }
         CustomComparator sort = new CustomComparator();
         list1.sort(sort);
-        Collections.reverse(list1);
+//        Collections.reverse(list1);
         int size = Math.min(list1.size(), recommend.getLimit());
         list1 = list1.subList(0, size);
         return new ResponseEntity<>(list1,HttpStatusCode.valueOf(200));
@@ -148,8 +148,6 @@ public class GameService  {
             union.add(g.getName());
             genre.add(g.getName());
         }
-
-
         for (int i =0; i < compare.size(); i++){
             union.add(compare.get(i));
         }
