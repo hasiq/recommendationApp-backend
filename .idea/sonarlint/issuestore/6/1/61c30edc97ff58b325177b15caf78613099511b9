@@ -1,20 +1,20 @@
 
 w
 java:S2293¼"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ô´8çééÑ1
-s
-java:S3655Û"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(»ãå­ıÿÿÿÿ8¸êéÑ1
-r
-java:S3655Z"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(É¼•ÿùÿÿÿÿ8ÌœÃğĞ1
-n
-java:S3655ê"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(çà„8¹êéÑ1
 r
 java:S3655h"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(îí›Äÿÿÿÿÿ8¸êéÑ1
 s
+java:S3655Û"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(»ãå­ıÿÿÿÿ8¸êéÑ1
+n
+java:S3655ê"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(çà„8¹êéÑ1
+r
+java:S3655Z"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(É¼•ÿùÿÿÿÿ8ÌœÃğĞ1
+s
 java:S3655…"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(éÀ¯ùÿÿÿÿ8ÌœÃğĞ1
-¦
-java:S4449"ˆAnnotate the parameter with @javax.annotation.Nullable in constructor declaration, or make sure that null can not be passed as argument.(Âë²ö8í‚éÑ1
 ¬
 java:S4449ø"ˆAnnotate the parameter with @javax.annotation.Nullable in constructor declaration, or make sure that null can not be passed as argument.(ÕÄÑœøÿÿÿÿ8¹êéÑ1
+¦
+java:S4449"ˆAnnotate the parameter with @javax.annotation.Nullable in constructor declaration, or make sure that null can not be passed as argument.(Âë²ö8í‚éÑ1
 _
 java:S2583;"CChange this condition so that it does not always evaluate to "true"(Û‰ç)8ÌœÃğĞ1
 G	java:S106K"+Replace this use of System.out by a logger.(³¹°8ÓœÃğĞ1
