@@ -47,3 +47,5 @@ p
 @demo/src/main/java/com/hasikowski/demo/Dto/GameRecommendDto.java,0\3\03000c62f165585de0073eb9a2cfd2803b58d17a
 l
 <demo/src/main/java/com/hasikowski/demo/model/UserEntity.java,1\6\160adf5ade22d00e796896abc1d43a26233a1c4b
+^
+.demo/src/main/resources/application.properties,b\d\bdf594d855e1d9326b9686f862c1fa6049f75420
